@@ -1,0 +1,47 @@
+
+$MainColorBG:rgb(1,1,43);
+$MainColor:rgb(5,217,232);
+$ViceColor:rgb(209,247,255);
+$ViceColorDark:rgb(0,120,170);
+$EmphsizeColor:rgb(255,42,109);
+
+
+@mixin decoration_position($pos-states,$T,$R,$B,$L,){
+    position: $pos-states;
+    top: $T;
+    right: $R;
+    bottom: $B;
+    left: $L;
+  }
+  
+  @mixin BorderCorner(
+      $T,$R,$B,$L,
+      $corner-length,
+      $border-width-T,$border-width-R,$border-width-B,$border-width-L,) 
+      {
+      @include decoration_position( absolute, $T,$R,$B,$L);
+      width:  $corner-length;
+      height: $corner-length;
+      border-top: $border-width-T ;
+      border-right: $border-width-R ;
+      border-bottom: $border-width-B ;
+      border-left: $border-width-L ;
+      box-sizing: border-box;
+  }
+
+@mixin FadeIn_Animation( $Opac_start , $Opac_End  ) {
+    animation-name: FadeIn ;
+    @keyframes FadeIn{
+        0% {    opacity: $Opac_start ;       }
+      100% {    opacity: $Opac_End   ;       }
+    }
+}
+
+@mixin Moving_Animation(  $directionX_start ,  $directionY_start , $directionX_End ,  $directionY_End , )
+{
+  animation-name: Moving ;
+  @keyframes Moving{
+      0% {    transform: translate( $directionX_start ,  $directionY_start) ;       }
+    100% {    transform: translate( $directionX_End ,  $directionY_End ) ;       }
+  }
+}
