@@ -885,7 +885,7 @@ color: $MainColor;
   box-sizing: border-box;
 
   background-color: $MainColorBG ;
-  opacity: 0.9;
+  opacity: 0.95;
 
 
 
@@ -1046,7 +1046,7 @@ color: $MainColor;
        li{
           list-style-type: square;
           margin-bottom: 12px;
-          max-width: 90%;
+          max-width: 50%;
           color: $ViceColor;
           margin-left: 20px;
           &::marker{

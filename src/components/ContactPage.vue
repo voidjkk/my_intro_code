@@ -4,6 +4,11 @@
 
 
       <div class="ContactContent">
+        <div v-if="isCopied" class=  "MessageAlert" >
+          <p>Content copied to clipboard !</p>
+          <div class="CornerDeco1"></div>
+          <div class="CornerDeco2"></div>
+        </div>
         <SectionTitleFrame title_name="Contact"  ></SectionTitleFrame>
         <div class="CornerDeco1"></div>
         <div class="CornerDeco2"></div>
@@ -63,18 +68,54 @@
            
         }
 
+
+        var isCopied = ref(false)
         const SwitchToWeb = () =>{
           let CheckMail = /@*mail/;
           if( CheckMail.test(UpperStr.value)  ){
-            let GoToMail = `mailto:${UpperStr.value}`
-            window.open( GoToMail , "_blank");
+            //複製文字到剪貼版
+            navigator.clipboard.writeText( UpperStr.value )
+            .then(() => {
+              throttle_click()
+              console.log('Content copied to clipboard');
+            })
+            .catch (() => {
+              console.error('Failed to copy');
+            });
           }
-
+         else{
           window.open( UpperStr.value , "_blank");
+         }
         }
-        
-      
-        return {    UpperStr , LowerStr , ShowIconInfo , isReflash , SwitchToWeb }
+
+        const open_alert = ()=>{
+          isCopied.value = true
+        } 
+        //限定x秒只會內執行一次
+        const throttle = function( func:any ,delay:any ){
+          let time_count:any
+          let isbusy:boolean
+
+          return (...para:any) => {
+            if( !isbusy ){
+              isbusy = true
+              func(para)  
+              clearTimeout(time_count)
+              console.log("做了一次")
+              time_count = setTimeout(()=>{
+  
+                isbusy = false
+                isCopied.value = false
+                console.log("在一次")
+              }, delay)
+            }
+          }
+  
+        }
+        const throttle_click = throttle(open_alert , 2000)
+
+        return {    UpperStr , LowerStr , ShowIconInfo , isReflash ,
+           SwitchToWeb , isCopied,  throttle_click , open_alert }
     },
 
 
@@ -154,16 +195,17 @@
     background-color: $MainColorBG;
     height: 80vh;
     margin: 0 auto;
-
+    opacity: 0.95;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    p{
+    & > p{
         color: $MainColor;
         font-size: 28px;
         margin-top: -40px;
+        margin-left: 20px;
     }
 
     i{
@@ -185,8 +227,31 @@
     }
 }
 
+.MessageAlert{
+  @include decoration_position(fixed, 25% , null ,null ,null);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background: $MainColorBG ;
+  border: 1px $MainColor solid;
+  color:  $EmphsizeColor ;
+  animation: MessageTempShow 2s ease-out;
+  animation-fill-mode: none;
+  opacity: 0;
+  margin: 0;
+  padding: 20px;
+  z-index: 800;
 
+  p{
+    font-size: 22px;
+  }
+}
 
+@keyframes MessageTempShow {
+    0%{    opacity: 1; }
+  100%{    opacity: 0; }
+}
 
 @keyframes ReflashingContent {
     0%{   clip-path: inset(0 100% 0 0);}

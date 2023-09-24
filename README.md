@@ -1,24 +1,6 @@
 # my_intro
 
-## Project setup
-```
-npm install
-```
+### demo網頁: <https://voidjkk.github.io/my_intro_demo/>  
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 相關說明
+使用 Vue cli、SCSS、vue router、vuex製作，提供能力參考
