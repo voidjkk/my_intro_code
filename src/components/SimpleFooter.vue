@@ -18,7 +18,7 @@
       <a href="mailto:jack91423@gmail.com" class="FooterIcon" >
         <i class="fas fa-envelope-square"></i>
       </a>
-      <a href="https://github.com/voidjkk?tab=repositories" target="_blank" class="FooterIcon">
+      <a href="https://github.com/voidjkk/my_intro_code" target="_blank" class="FooterIcon">
         <i class="fab fa-github" ></i>
       </a>
     </div>
