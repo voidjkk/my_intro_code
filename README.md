@@ -8,7 +8,7 @@
 ### 細節說明
 
 * 利用vue router實現SPA
-* 使用偽元素 before、after 實現多種的裝飾效果
+* 使用偽元素 before、after 實現多種視覺效果
 * 使用radial-gradient結合響應式data實現動畫效果
 * Brief頁面利用v-for、v-if實現Accordion design
 * 利用Vuex控制loading畫面
