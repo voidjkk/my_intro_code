@@ -47,7 +47,7 @@ export default ({
 
 </template>
 
-<style lang="scss">
+<style  lang="scss">
 //引入google fonts字體
 @import url('https://fonts.googleapis.com/css2?family=Handjet:wght@600&display=swap');
 
@@ -116,8 +116,9 @@ body{
       font-size: 16px;
     &.router-link-exact-active {
         
-        font-size: 18px;
-        filter: drop-shadow(0px 0px 8px $ViceColor);
+        background-color: $MainColorBG;
+        filter: drop-shadow(0px 0px 8px $ViceColor) ;
+    
     }
 
 

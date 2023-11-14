@@ -1,18 +1,31 @@
 <template>
     <nav   :class="{ FlickingInAnima  :isShowNavBar ,
                      FlickingOutAnima  :!isShowNavBar , }"
-                  
     >
-       <div class="NavScale">
-         <router-link v-for="route in NavBtnData" :key="route.path" :to="route.path">
-           <div class="CornerDeco1_Btn"></div>
-           <div class="CornerDeco2_Btn"></div>
-           <div class="InnerButton">
-             <span class="material-symbols-outlined">{{ route.Icon }}</span>
-             <p>{{route.name}}</p>
-           </div>
 
-         </router-link>
+        <div class="NavScale">
+          <i class="fas fa-bars" @click="OpenRwdMenu"></i>
+          <div  v-if="isOpenMenu"  class ="RwdMenuStyle" >
+            <router-link v-for="route in NavBtnData" :key="route.path" :to="route.path">
+              <div class="InnerButton" @click="OpenRwdMenu">
+                <span class="material-symbols-outlined">{{ route.Icon }}</span>
+                <p>{{route.name}}</p>
+              </div>
+ 
+            </router-link>
+          </div>
+
+          <div class ="WebMenuStyle" >
+            <router-link v-for="route in NavBtnData" :key="route.path" :to="route.path">
+              <div class="CornerDeco1_Btn"></div>
+              <div class="CornerDeco2_Btn"></div>
+              <div class="InnerButton">
+                <span class="material-symbols-outlined">{{ route.Icon }}</span>
+                <p>{{route.name}}</p>
+              </div>
+ 
+            </router-link>
+          </div>
 
         </div>
 
@@ -92,7 +105,11 @@
         lastY = window.scrollY 
     }
 
-    
+    const NavScale =  ref<HTMLDivElement>()
+    var isOpenMenu = ref(false)
+    const OpenRwdMenu = ()=>{
+        isOpenMenu.value = !isOpenMenu.value
+    }
       onMounted(() => {
       window.addEventListener('scroll', isHideNavBar);
       
@@ -105,7 +122,8 @@
 
 
        return{
-        MusicPlayer , BGM_Toggle , isPlayBGM, NavBtnData ,isShowNavBar
+        MusicPlayer , BGM_Toggle , isPlayBGM, NavBtnData ,isShowNavBar,
+        OpenRwdMenu,NavScale,isOpenMenu
        }
      }
 
@@ -134,9 +152,7 @@ a{
   display: flex;
   align-items: center;
   padding: 12px;
-
-
-  background-color: $MainColorBG;
+ // background-color: $MainColorBG;
 
   &:hover{
       background-color: rgba(147, 201, 251,0.25);
@@ -159,6 +175,13 @@ a{
     font-size: 22px;
     margin-left: 4px;
   }
+
+  @include RWD_phone(425px){
+
+    justify-content: center;
+
+  }
+
 
 }
 
@@ -237,15 +260,29 @@ display: none;
 
 .NavScale{
   display: flex;
-  justify-content: center;
+ // justify-content: center;
   align-items: center;
+  height: 100%;
+
 //  padding-bottom: 5px; //調整因nav視覺效果的偏差
+
+
+  .fa-bars{
+    display: none;
+
+    @include RWD_phone(425px){
+      display: flex;
+      color: $ViceColorDark;
+      font-size: 36px;
+      cursor: pointer;
+    }
+  }
 }
 
 nav{
 
-  @include decoration_position(fixed,0px ,8px ,0px ,0px );
-  height: 10vh;
+  @include decoration_position(fixed,0px ,10px ,0px ,0px );
+  height: 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -255,9 +292,11 @@ nav{
   padding-right: 10px;
   border-right: 2px $MainColor solid;
   border-bottom: 2px $MainColor solid;
-  z-index: 600;
+  z-index: 720;
   animation: FlickingOut linear 2s;
-  
+  @include RWD_phone(425px){
+    z-index: 720;
+  }
    &::after{
     content: "";
     position: absolute;
@@ -272,7 +311,42 @@ nav{
     opacity: 0.8;
    }
 
+   @include RWD_phone(425px){
+    @include decoration_position(fixed,0px ,2px ,0px ,0px );
+  }
+}
 
+.RwdMenuStyle{
+  display: none;
+
+  @include RWD_phone(425px){
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ;
+    @include decoration_position(absolute , 75px , 0px , null , 0px);
+    animation: FlickingIn ease-out 0.5s ;
+  }
+
+  & > a{
+    margin: 0;
+    margin-bottom: 4px;
+    background-color: $MainColorBG ;
+    &.router-link-exact-active {
+       background:radial-gradient(ellipse 90% 70% at center ,
+                                  $MainColorBG 0%, $MainColorBG 45%,
+                                  $MainColor);
+       filter: none;
+    }
+  }
+
+}
+
+.WebMenuStyle{
+  display: flex;
+  @include RWD_phone(425px){
+    display: none;
+
+  }
 }
 
 .FlickingInAnima{
@@ -286,7 +360,7 @@ nav{
 
 
 @keyframes FlickingIn{
-  0% { opacity: 0;    transform:  translateY(-10vh); }
+  0% { opacity: 0;  transform:  translateY(-10vh); }
 
 100% { opacity: 1;  transform:  translateY(0); }
 }

@@ -8,242 +8,16 @@
 
               <SectionTitleFrame  title_name="Brief" ></SectionTitleFrame>
  
-              <div class="ArticleText">Press  here  to  know  more</div>
-              <div v-if="isShowInfo" id="InfoContent">
-                <ul class="InfoContentScale">
-                  <template v-for=" Col in Cols"  :key="Col.id" >
-                    <li  
-                       @click="PassColNum(Col.ColNumber)" 
-                       :class="{   ...GetHoverStyle(Col.ColNumber) ,
-                                   ColStyle : CheckingNowColNum(-1) ,
-                                   }"
-                    >
-                    <div v-show="CheckingNowColNum(-1)" >
-                        <div  class="VerticalArr">
-                          <div class="TitleImg">
-                            <i :class= "Col.IconData" ></i>
-                          </div>
-                          <h2>{{Col.ColTitle}}</h2>
-                        </div>
-                    </div>
-                    </li>
-                    <div  
-                      class="ActivedContent"
-                      v-if="CheckingNowColNum(Col.ColNumber)"
-                    >
-                      <article v-if="CheckingNowColNum(1)" >
-                          <div  class="BriefIntroScale" >
-                              <div  class="VerticalArr">
-                                <div class="CornerDeco1" ></div>
-                                <div class="CornerDeco2" ></div>
-                                <div class="TitleImg">
-                                  <i :class= "Col.IconData" ></i>
-                                </div>
-                                <h2>{{Col.ColTitle}}</h2>
-                                
-                              </div>
-                              <div class="BriefIntro"  >
-                                <div class="CornerDeco1"></div>
-                                <div class="CornerDeco2"></div>
-                                <ul>
-                                  <li>I am a software engineer. My goal is being a full-stack developer.</li>
-                                  <li>Born in 1997, Living in Taipei.</li>
-                                  <li>Stay curious when learning new things, Embracing new perspectives. </li>
-                                </ul>
-                              </div>
-                          </div>
-                          <div class="DecoLine" ></div>
-                          <div class="ArticleScale">
-                            <label>
-                                <div class="TitleWithBar" style="--ProgressBarWidth: 95% ;"></div>
-                                <div class="TitleBG">
-                                    <h3>Experience</h3>
-                                </div>
+              <div class="ArticleText">Press & hold  here  to  know  more</div>
 
-                            </label>
-
-                            <ul class="TimeLine" >
-                              <li>
-                                  <div class="TL_NodeDeco"></div>
-                                  <div class="LineSpace"></div>
-                                  <div class="ContentSpace">
-                                    <div class="CornerDeco1"></div>
-                                    <div class="CornerDeco2"></div>
-                                    <h4> ~2019 graduated from YZU</h4>
-                                    <p>I earned a bachelor’s degree in CEMS ( Chemical Engineering & Materials Science ) at Yuan Ze University.
-                                    </p>
-                                  </div>
-
-                              </li>
-                              <li>
-                                  <div class="TL_NodeDeco"></div>
-                                  <div class="LineSpace"></div>
-                                  <div class="ContentSpace">
-                                    <div class="CornerDeco1"></div>
-                                    <div class="CornerDeco2"></div>
-                                    <h4>2020 ~ 2022 Cathay United Bank </h4>
-                                    <p> I have about two years of work experience in full-stack developer.
-                                        <br>In addition to maintaining the core software for the backend of a banking system on Linux, I solve problems related to business logic for salespeople, and query database using SQL.
-                                    </p>
-                                  </div>
-                                
-                              </li>
-                              <li>
-                                  <div class="TL_NodeDeco"></div>
-                                  <div class="LineSpace"></div>
-                                  <div class="ContentSpace">
-                                    <div class="CornerDeco1"></div>
-                                    <div class="CornerDeco2"></div>
-                                    <h4>2023 ~ </h4>
-                                    <p>Keeping learning</p>
-                                  </div>
-                                
-                              </li>
-                            </ul>
-
-                          </div>
-
-
-                      </article>
-                      <article v-if="CheckingNowColNum(2)" >
-
-                        <div  class="NormalArr">
-                          <div class="CornerDeco1" ></div>
-                          <div class="CornerDeco2" ></div>
-                          <div class="TitleImg">
-                            <i :class= "Col.IconData" ></i>
-                          </div>
-                          <h2>{{Col.ColTitle}}</h2>
-                        </div>
-
-                          <div class="ArticleScale">
-                            <label>
-                                <div class="TitleWithBar" style="--ProgressBarWidth: 83% ;"></div>
-                                <div class="TitleBG">
-                                    <h3>Front-end</h3>
-                                </div>
-
-                            </label>
-
-                            <ul  >
-                              <li>Experience with Javascript frameworks : Vue.js</li>
-                              <li>Experience with Vuex & Vue Router</li>
-                              <li>Experience with integrating the YouTube API by using Axios</li>
-                              <li>Use jQuery to create dynamic effects</li>
-                              <li>Could design Infinite Scrolling</li>
-                              <li>Design web layout with SCSS</li>
-                              <li>Could make responsive web layout</li>
-                            </ul>
-
-                          </div>
-                          <div class="ArticleScale">
-                            <label>
-                                <div class="TitleWithBar" style="--ProgressBarWidth: 63% ;"></div>
-                                <div class="TitleBG">
-                                    <h3>Back-end</h3>
-                                </div>
-
-                            </label>
-
-                            <ul  >
-                              <li>Have experience in querying large databases</li>
-                              <li>Optimizing query performance</li>
-                              <li>Experience with reading shell script</li>
-                              <li>Could use basic Linux command</li>
-
-                            </ul>
-
-                          </div>
-                          <div class="ArticleScale">
-                            <label>
-                                <div class="TitleWithBar" style="--ProgressBarWidth: 71% ;"></div>
-                                <div class="TitleBG">
-                                    <h3>Language</h3>
-                                </div>
-                            </label>
-
-                            <ul >
-                              <li>Chinese : native speaker</li>
-                              <li>English : intermediate</li>
-                              <li>Japanese : basic</li>
-                            </ul>
-
-                          </div>
-                          <div class="ArticleScale">
-                            <label>
-                                <div class="TitleWithBar" style="--ProgressBarWidth: 51% ;"></div>
-                                <div class="TitleBG">
-                                    <h3>Other</h3>
-                                </div>
-                            </label>
-
-                            <ul >
-                              <li>Have experience in git version control</li>
-                              <li>Understanding how to use branch / merge command in git</li>
-                            </ul>
-
-                          </div>
-                      </article>
-                      <article v-if="CheckingNowColNum(3)" >
-                        <div  class="NormalArr">
-                                <div class="CornerDeco1" ></div>
-                                <div class="CornerDeco2" ></div>
-                                <div class="TitleImg">
-                                  <i :class= "Col.IconData" ></i>
-                                </div>
-                                <h2>{{Col.ColTitle}}</h2>
-                        </div>
-                          <div class="ArticleScale">
-                            <label>
-                                <div class="TitleWithBar" style="--ProgressBarWidth: 55% ;"></div>
-                                <div class="TitleBG">
-                                    <h3>Passive</h3>
-                                </div>
-
-                            </label>
-
-                            <ul  >
-                              <li>Listening to music</li>
-                              <li>Playing video games</li>
-                              <li>Watching animation</li>
-                            </ul>
-
-                          </div>
-                          <div class="ArticleScale">
-                            <label>
-                                <div class="TitleWithBar" style="--ProgressBarWidth: 70% ;"></div>
-                                <div class="TitleBG">
-                                    <h3>Active</h3>
-                                </div>
-
-                            </label>
-
-                            <ul  >
-                              <li>Playing badminton</li>
-                              <li>Developing skills</li>
-                              <li>Tasting ramen</li>
-                            </ul>
-                           
-                          </div>
-                          <span style="height: 300px;"></span>
-                      </article>
-                      <div   class="ReturnBtn" @click.stop="Goback" >
-                          <span class="material-symbols-outlined">undo</span>
-                      </div>
-                    </div>
-                  </template>
-                </ul>
-                <div @click="CancelWindow" class="CloseBtn" >
-                  <div></div>
-                  <div></div>
-                  <p>CLOSE</p>
-                </div>
-              </div>  
               <div class="SVGFrame"
               :style="PressEffect"
               @mousedown="CountProgress"
               @mouseup="ResetProgress"
               @mouseleave="ResetProgress"
+              @touchstart="CountProgress"
+              @touchmove="ResetProgress"
+              @touchend="ResetProgress"
               @contextmenu.prevent
               >
                 <div class="ProgressNum"> {{ PressPercent }} %</div>
@@ -415,6 +189,239 @@
         </div>
 
     </div>
+    <div v-if="isShowInfo" id="InfoContent">
+                <ul class="InfoContentScale">
+                  <template v-for=" Col in Cols"  :key="Col.id" >
+                    <li  
+                       @click="PassColNum(Col.ColNumber)" 
+                       :class="{   ...GetHoverStyle(Col.ColNumber) ,
+                                   ColStyle : CheckingNowColNum(-1) ,
+                                   }"
+                    >
+                    <div v-show="CheckingNowColNum(-1)" >
+                        <div  class="VerticalArr">
+                          <div class="TitleImg">
+                            <i :class= "Col.IconData" ></i>
+                          </div>
+                          <h2>{{Col.ColTitle}}</h2>
+                        </div>
+                    </div>
+                    </li>
+                    <div  
+                      class="ActivedContent"
+                      v-if="CheckingNowColNum(Col.ColNumber)"
+                    >
+                      <article v-if="CheckingNowColNum(1)" >
+                          <div  class="BriefIntroScale" >
+                              <div  class="VerticalArr">
+                                <div class="CornerDeco1" ></div>
+                                <div class="CornerDeco2" ></div>
+                                <div class="TitleImg">
+                                  <i :class= "Col.IconData" ></i>
+                                </div>
+                                <h2>{{Col.ColTitle}}</h2>
+                                
+                              </div>
+                              <div class="BriefIntro"  >
+                                <div class="CornerDeco1"></div>
+                                <div class="CornerDeco2"></div>
+                                <ul>
+                                  <li>I am a software engineer. My goal is being a full-stack developer.</li>
+                                  <li>Born in 1997, Living in Taipei.</li>
+                                  <li>Stay curious when learning new things, Embracing new perspectives. </li>
+                                </ul>
+                              </div>
+                          </div>
+                          <div class="DecoLine" ></div>
+                          <div class="ArticleScale">
+                            <label>
+                                <div class="TitleWithBar" style="--ProgressBarWidth: 95% ;"></div>
+                                <div class="TitleBG">
+                                    <h3>Experience</h3>
+                                </div>
+
+                            </label>
+
+                            <ul class="TimeLine" >
+                              <li>
+                                  <div class="TL_NodeDeco"></div>
+                                  <div class="LineSpace"></div>
+                                  <div class="ContentSpace">
+                                    <div class="CornerDeco1"></div>
+                                    <div class="CornerDeco2"></div>
+                                    <h4>Graduated from YZU</h4>
+                                    <div class="ContentDate"> ~ 2019 </div>
+                                    <p>I earned a bachelor’s degree in CEMS ( Chemical Engineering & Materials Science ) at Yuan Ze University.
+                                    </p>
+                                  </div>
+
+                              </li>
+                              <li>
+                                  <div class="TL_NodeDeco"></div>
+                                  <div class="LineSpace"></div>
+                                  <div class="ContentSpace">
+                                    <div class="CornerDeco1"></div>
+                                    <div class="CornerDeco2"></div>
+                                    <h4>Cathay United Bank </h4>
+                                    <div class="ContentDate">2020 ~ 2022 </div>
+                                    <p> I have about two years of work experience in full-stack developer.
+                                        <br>In addition to maintaining the core software for the backend of a banking system on Linux, I solve problems related to business logic for salespeople, and query database using SQL.
+                                    </p>
+                                  </div>
+                                
+                              </li>
+                              <li>
+                                  <div class="TL_NodeDeco"></div>
+                                  <div class="LineSpace"></div>
+                                  <div class="ContentSpace">
+                                    <div class="CornerDeco1"></div>
+                                    <div class="CornerDeco2"></div>
+                                    <h4>Keeping learning</h4>
+                                    <div class="ContentDate">2023 ~ </div>
+                                    <p>Learning new things.</p>
+                                  </div>
+                                
+                              </li>
+                            </ul>
+
+                          </div>
+
+
+                      </article>
+                      <article v-if="CheckingNowColNum(2)" >
+
+                        <div  class="NormalArr">
+                          <div class="CornerDeco1" ></div>
+                          <div class="CornerDeco2" ></div>
+                          <div class="TitleImg">
+                            <i :class= "Col.IconData" ></i>
+                          </div>
+                          <h2>{{Col.ColTitle}}</h2>
+                        </div>
+
+                          <div class="ArticleScale">
+                            <label>
+                                <div class="TitleWithBar" style="--ProgressBarWidth: 83% ;"></div>
+                                <div class="TitleBG">
+                                    <h3>Front-end</h3>
+                                </div>
+
+                            </label>
+
+                            <ul  >
+                              <li>Experience with Javascript frameworks : Vue.js</li>
+                              <li>Experience with Vuex & Vue Router</li>
+                              <li>Experience with integrating the YouTube API by using Axios</li>
+                              <li>Use jQuery to create dynamic effects</li>
+                              <li>Could design Infinite Scrolling</li>
+                              <li>Design web layout with SCSS</li>
+                              <li>Could make responsive web layout</li>
+                            </ul>
+
+                          </div>
+                          <div class="ArticleScale">
+                            <label>
+                                <div class="TitleWithBar" style="--ProgressBarWidth: 63% ;"></div>
+                                <div class="TitleBG">
+                                    <h3>Back-end</h3>
+                                </div>
+
+                            </label>
+
+                            <ul  >
+                              <li>Have experience in querying large databases</li>
+                              <li>Optimizing query performance</li>
+                              <li>Experience with reading shell script</li>
+                              <li>Could use basic Linux command</li>
+
+                            </ul>
+
+                          </div>
+                          <div class="ArticleScale">
+                            <label>
+                                <div class="TitleWithBar" style="--ProgressBarWidth: 71% ;"></div>
+                                <div class="TitleBG">
+                                    <h3>Language</h3>
+                                </div>
+                            </label>
+
+                            <ul >
+                              <li>Chinese : native speaker</li>
+                              <li>English : intermediate</li>
+                              <li>Japanese : basic</li>
+                            </ul>
+
+                          </div>
+                          <div class="ArticleScale">
+                            <label>
+                                <div class="TitleWithBar" style="--ProgressBarWidth: 51% ;"></div>
+                                <div class="TitleBG">
+                                    <h3>Other</h3>
+                                </div>
+                            </label>
+
+                            <ul >
+                              <li>Have experience in git version control</li>
+                              <li>Understanding how to use branch / merge command in git</li>
+                            </ul>
+
+                          </div>
+                      </article>
+                      <article v-if="CheckingNowColNum(3)" style="overflow:hidden ;">
+                        <div  class="NormalArr">
+                                <div class="CornerDeco1" ></div>
+                                <div class="CornerDeco2" ></div>
+                                <div class="TitleImg">
+                                  <i :class= "Col.IconData" ></i>
+                                </div>
+                                <h2>{{Col.ColTitle}}</h2>
+                        </div>
+                          <div class="ArticleScale">
+                            <label>
+                                <div class="TitleWithBar" style="--ProgressBarWidth: 55% ;"></div>
+                                <div class="TitleBG">
+                                    <h3>Passive</h3>
+                                </div>
+
+                            </label>
+
+                            <ul  >
+                              <li>Listening to music</li>
+                              <li>Playing video games</li>
+                              <li>Watching animation</li>
+                            </ul>
+
+                          </div>
+                          <div class="ArticleScale">
+                            <label>
+                                <div class="TitleWithBar" style="--ProgressBarWidth: 70% ;"></div>
+                                <div class="TitleBG">
+                                    <h3>Active</h3>
+                                </div>
+
+                            </label>
+
+                            <ul  >
+                              <li>Playing badminton</li>
+                              <li>Developing skills</li>
+                              <li>Tasting ramen</li>
+                            </ul>
+                           
+                          </div>
+                          <span style="height: 300px;"></span>
+                      </article>
+                      <div   class="ReturnBtn" @click.stop="Goback" >
+                        <i class="fas fa-undo"></i>
+                      </div>
+                    </div>
+                  </template>
+                </ul>
+                <div @click="CancelWindow" class="CloseBtn" >
+                  <div></div>
+                  <div></div>
+                  <p>CLOSE</p>
+                </div>
+              </div>  
 <div class="Section2"></div>
     
     
@@ -437,12 +444,7 @@
         ]
 
 
-        const GetColIcon = (ClassName:any)=>{
-             return  `${ClassName.IconData}`
-        }
-
-
-        var  PressPercent = ref(0)
+        var PressPercent = ref(0)
         var PressEffectLevel = ref(0)
         var timer:any;
         var isShowInfo = ref(false)
@@ -521,12 +523,23 @@
   //  watchEffect( ()=>{
 
    // })
-        
+        const testt = () =>{
+          console.log("按")
 
+        } 
+        const testt2 = () =>{
+          console.log("放")
+
+        } 
+        const testt3 = () =>{
+          console.log("3")
+
+        } 
     return{
         PressPercent,  CountProgress ,  ResetProgress  , timer , isShowInfo,
         CancelWindow , PressEffect ,  isActive ,OpenContent ,Goback
-        ,CheckingNowColNum , PassColNum , Cols ,GetHoverStyle  , GetColIcon
+        ,CheckingNowColNum , PassColNum , Cols ,GetHoverStyle  ,
+        testt , testt2 , testt3
     }
       }
 
@@ -580,14 +593,24 @@
     align-items: center;
     padding-top: 15%;
 
+    @include RWD_phone(425px){
+      padding-top: 50%;
+      margin-right: 15px;
+    }
 
     &:hover{
       width: calc( 25% + 50px );
-
       background-color: rgba(200, 200, 254, 0.1) ;
       opacity: 1;
       cursor: pointer;
       padding-top: 13%;
+
+      @include RWD_phone(425px){
+        width: calc( 25% + 20px );
+        padding-top: 46%;
+
+      }
+
       i{
         filter: drop-shadow(0px 0px 10px $ViceColorDark );
       }
@@ -713,13 +736,23 @@
     width: 96%;
     height: 90%;
     border: $MainColor 1px solid;
+
+    //不清楚為何右側多出空間
     @include decoration_position(fixed , calc( 50% ) , null , null , 50%);
     
     background-color:$MainColorBG;
     opacity: 1;
     animation: ShowInfoAnima  1s   ;
     transform: translate(-50%, -50%);
+    z-index: 720; //必須比圖層順序下到上為:info inner -> nav -> info Content(彈出的視窗)
 
+    @include RWD_phone(768px){
+    width: 90%;
+    height: 90%;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    }
 
     .CloseBtn{
         @include decoration_position(absolute ,0px , 0px, null, null);
@@ -827,6 +860,10 @@
     z-index: -1;
     border-radius: 50%;
 
+    @include RWD_phone(768px){
+      user-select: none;
+    }
+
     &:hover{
         animation:  HoverScaleAnima 0.8s  ;
         animation-fill-mode: forwards;
@@ -855,8 +892,13 @@
 .Section1Scale{
     padding-left: 30px;
     padding-right: calc(30px - 12px);
-    padding-top: 50px;
+    padding-top: calc( 10vh ) ;
+    @include RWD_phone(768px){
+      padding-left: 30px;
+      padding-right: calc( 30px );
+      padding-top: calc(10vh + 50px ) ;
 
+    }
 }
 
 .Section1{
@@ -914,6 +956,14 @@ color: $MainColor;
         margin-left: 5%;
         margin-right: 5%;
 
+        @include RWD_phone(425px){
+          margin: 0;
+          margin-top: 16px;
+          width: 100%;
+        }
+        ul{
+          margin-top: 10px;
+        }
         li{
           list-style: none;
           padding: 6px;
@@ -921,6 +971,12 @@ color: $MainColor;
           margin-left: 32px;
           color:$ViceColor;
           font-size: 22px;
+          @include RWD_phone(425px){
+            margin-bottom: 8px;
+            font-size: 20px;
+          }
+
+
           &::marker{
             content: "▶ ";
             color: $ViceColorDark ;
@@ -933,7 +989,7 @@ color: $MainColor;
 .ActivedContent{
     @include decoration_position( absolute , 0px , 0px , 0px , 0px );
     width: 100% ;
-    z-index: 720;
+    z-index: 730;
     background-color: $MainColorBG ;
     
     display: flex;
@@ -947,6 +1003,12 @@ color: $MainColor;
       display:flex;
       width: 100%;
       margin-left: 5%;
+      @include RWD_phone(425px){
+          flex-direction: column;
+          margin-left: 0px;
+          margin-bottom: 20px;
+
+      }
 
     }
     .VerticalArr{
@@ -976,6 +1038,7 @@ color: $MainColor;
     }
 
     article{
+      overscroll-behavior: contain;
       display: block;
       width: 90%;
       overflow-y: auto;
@@ -1023,7 +1086,7 @@ color: $MainColor;
        
       }
       &::-webkit-scrollbar{  
-      width: 12px;
+      width: 10px;
       }
     }
 
@@ -1032,7 +1095,10 @@ color: $MainColor;
         margin-top: 20px;
         text-align:left;
         @include decoration_position(relative , null, null, null, null);
+        @include RWD_phone(425px){
+          padding-right: 0px;
 
+        }
 
 
        ul{
@@ -1041,6 +1107,11 @@ color: $MainColor;
             margin-bottom: 12px;
             column-count:2;
             max-height: 200px;
+
+            @include RWD_phone(425px){
+              column-count:1;
+              max-height: none;
+            }
        }
 
        li{
@@ -1049,6 +1120,15 @@ color: $MainColor;
           max-width: 50%;
           color: $ViceColor;
           margin-left: 20px;
+          @include RWD_phone(768px){
+            max-width: 80%;
+
+          }
+          @include RWD_phone(425px){
+            max-width: 100%;
+            margin-bottom: 16px;
+          }
+
           &::marker{
             color:$ViceColor ;
             width: 5px;
@@ -1082,10 +1162,14 @@ color: $MainColor;
              border: none;
              max-width:none;
              margin-bottom: 0px;
-
+             margin-left: 0px;
              overflow: auto;
              padding: 10px;
              overflow: hidden;
+             @include RWD_phone(425px){
+                padding-left: 0px;
+                padding-right: 4px;
+              }
            }
            .TL_NodeDeco{
             //bef=圓 aft=方形
@@ -1095,8 +1179,12 @@ color: $MainColor;
               width: 18px;
               height: 18px;
               border-radius: 50%;
-             background-color: $MainColor;
-             transform: translate(0px,-50%);
+              background-color: $MainColor;
+              transform: translate(0px,-50%);
+
+              @include RWD_phone(425px){
+                left: calc( 4px + 3px ); //圓心中心點+3才會對齊正方中心
+              }
              
             }
             &::after{
@@ -1106,10 +1194,14 @@ color: $MainColor;
               height: 24px;
               border: 1px $MainColor solid  ;
               transform: translate(0px,-50%);
-
               animation: TL_NodeCubeAnimation 1.2s linear infinite;
+
+              @include RWD_phone(425px){
+                left: calc( 4px - 1px );
+              }
             }
            }
+
            .LineSpace{
             display: inline-block;
 
@@ -1119,17 +1211,25 @@ color: $MainColor;
               @include decoration_position(absolute, $TimeLineNodeY, null, null, calc( 12px + $TimeLineNodeX));
               width: 1px;
               height: 100%;
+              background-color: $MainColor;
+              transform: translate(0px,-50%);
 
-             background-color: $MainColor;
-             transform: translate(0px,-50%);
-
+              @include RWD_phone(425px){
+                left: 16px;
+              }
             }
+
             &::after{
               content: "";
               @include decoration_position(absolute, $TimeLineNodeY, null, null, calc( 12px + $TimeLineNodeX));
               width: calc(80px );
               height: 1px;
               background-color: $MainColor;
+
+              @include RWD_phone(425px){
+                left: 16px;
+                width: calc(40px );
+              }
             }
 
            }
@@ -1139,24 +1239,46 @@ color: $MainColor;
             border: 1px $MainColor solid;
             height: 100%;
             padding: 10px;
-            margin-left: 100px;
+            margin-left: 102px;  //交叉點中心是32 + 橫線長度80 - wrap的padding
             margin-right: 5%;
-            h4{
 
-              font-size: 24px;
-              margin-bottom: 10px;
-              color: $MainColor;
-            }
-            p{
-              display: block;
-              line-height: 30px;
-              word-wrap:break-word;  
-              word-break: none;
-              color: $ViceColor;
+            @include RWD_phone(425px){
+              margin-left: 56px; //交叉點中心是16 橫線長度40
+              margin-right: 0px;
             }
 
+              h4{
+  
+                font-size: 24px;
+                color: $MainColor;
+                @include RWD_phone(425px){
+                  font-size: 22px;
+  
+                }
+              }
+              p{
+                display: block;
+                line-height: 30px;
+                word-wrap:break-word;  
+                word-break: none;
+                color: $ViceColor;
+                font-size: 20px;
+                @include RWD_phone(425px){
+                  font-size: 16px;
+                  line-height: 20px;
+                }
+              }
 
+           }
+           .ContentDate{
+            font-size: 20px;
+            color: $MainColor;
+            text-align: right;
 
+            @include RWD_phone(425px){
+                  font-size: 16px;
+                  line-height: 16px;
+                }
            }
 
 
@@ -1191,7 +1313,10 @@ color: $MainColor;
             // 下方為縮寫: background-color、background-position、 background-size、background-repeat
             background: linear-gradient(to right, $ViceColor 0px 70%, $EmphsizeColor ) left  / var(--ProgressBarWidth) 100% no-repeat;
             transform: skew(-45deg);
+            @include RWD_phone(425px){
+                   width: 210px;
 
+            }
 
             &::before{
                 content: "";
@@ -1204,7 +1329,7 @@ color: $MainColor;
                  linear-gradient(90deg , $ViceColorDark 0px 5px  , transparent 5px calc(100% - 5px) , $ViceColorDark calc(100% - 5px) 100% ),
                  linear-gradient(0deg ,  $ViceColorDark 0px 5px  , transparent 5px calc(100% - 5px) , $ViceColorDark calc(100% - 5px) 100% ),
                  repeating-linear-gradient(90deg  , $ViceColorDark 0px 6px, transparent 6px 16px ) right  / 50% 100%   no-repeat ;
-                 
+
             }
         }
 
@@ -1229,7 +1354,11 @@ color: $MainColor;
         margin-top: 3%;
         height: 1px;
         background-color: $MainColor  ;
+        @include RWD_phone(425px){
+
+          margin-top: 8%;
         
+        }
     }
 
 
@@ -1247,19 +1376,24 @@ color: $MainColor;
      display: flex;
      align-items: center;
      justify-content: center;
-    
+
+     @include RWD_phone(768px){
+       top: 8px;
+
+       height: 40px;
+       width: 40px;
+       border-radius: 50%;
+       background-color: rgba(0,120,170,0.3);
+
+      }
 
      &:hover{
         filter: drop-shadow(1px 1px 8px #5555e0);
         animation: BreatheEffect_MyInfo 2s infinite ;
      }
 
-     .material-symbols-outlined {
-       font-variation-settings:
-       'FILL' 0,
-       'wght' 600,
-       'GRAD' 0,
-       'opsz' 40
+     .fa-undo{
+      font-size: 18px;
      }
 
 

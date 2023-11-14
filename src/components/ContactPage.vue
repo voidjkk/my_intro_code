@@ -29,11 +29,11 @@
             ></div>
 
             <span class="UpperStr"  @click="SwitchToWeb"
-           :class= "{ ReflashContent : isReflash  }"
+              :class= "{ ReflashContent : isReflash  }"
             >{{ UpperStr }}
-        </span>
+            </span>
 
-           <span class="LowerStr">{{ LowerStr }}</span>
+            <span class="LowerStr">{{ LowerStr }}</span>
         </div>
       </div>
 
@@ -101,12 +101,12 @@
               isbusy = true
               func(para)  
               clearTimeout(time_count)
-              console.log("做了一次")
+
               time_count = setTimeout(()=>{
   
                 isbusy = false
                 isCopied.value = false
-                console.log("在一次")
+
               }, delay)
             }
           }
@@ -166,16 +166,45 @@
         transform: translate(-50%, -50%);
         text-align: center;
         width: calc(100% - ( 10px + 1px )  * 2 )   ;  //單邊padding跟border
+        overflow: hidden;
+
+        &::-webkit-scrollbar-thumb{   
+            background-color: $MainColorBG ;
+            background-clip: content-box; 
+            border: 0.5px solid $MainColor;
+        }
+        &::-webkit-scrollbar{  
+        width: 2px;
+        height: 2px;
+        }
+        &::-webkit-scrollbar-track{
+          background-color:  $MainColorBG ;
+        }
+
+
     }
     .UpperStr{
         z-index: 500;
         cursor: pointer;
+        overflow-x: auto;
         &:hover{
           color: $ViceColor ;
         }
+        @include RWD_phone(768px){
+           overflow-x: auto;
+
+        }
+
+
+
     }
     .LowerStr{ 
         z-index: 400;
+        @include RWD_phone(768px){
+          margin-bottom: 4px;
+        }
+
+
     }
 
 
@@ -202,18 +231,23 @@
     justify-content: center;
 
     & > p{
-        color: $MainColor;
-        font-size: 28px;
-        margin-top: -40px;
-        margin-left: 20px;
+      color: $MainColor;
+      font-size: 28px;
+      margin-top: -40px;
+      margin-left: 20px;
+      @include RWD_phone(768px){
+        margin-left: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
 
     i{
-        margin-left: 10px;
-        margin-right: 10px;
-        font-size:32px;
-        color: $MainColor;
-        cursor: pointer;
+      margin-left: 10px;
+      margin-right: 10px;
+      font-size:32px;
+      color: $MainColor;
+      cursor: pointer;
     }
   }
 .ContactIcons{

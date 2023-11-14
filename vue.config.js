@@ -1,5 +1,6 @@
 //在這邊可以為環境設定一些模組或插件，用甚麼方法壓縮打包之類的
-//取消ESLINT這項rele
+// 引入新插件需要這行跟使用.use(HtmlWebpackPlugin) const HtmlWebpackPlugin = require('html-webpack-plugin') ;
+
 module.exports = {
   //打包時沒輸入這個打開index會是空白(直接設 publicPath: './'也可以) 
   //import各東西的基礎路徑，後面會接/asset這樣
@@ -14,14 +15,20 @@ module.exports = {
           .rule("scss")
           .oneOf("vue")
           .test( /\.(sass|scss)$/) //正則篩選要使用該規則的文件
-          .use("sass-loader") //若沒其他設定可以直接填loader名稱，此時等同下面的loader，執行順序最後的先執行
+          .use("sass-loader") //引入的loader名稱，執行順序最後的先執行
             .loader("sass-loader")   //使用的loader名稱
             .tap(options => { //TAP修改loader內的內容
               options.additionalData = "  @import  '@/assets/mixin.scss'; "
               return options;
             })
-          .end() //增加多個時要以end()區隔
-
+          .end();           //增加多個時要以end()區隔
+          //cli原碼將 html-webpack-plugin建為html
+          config.plugin('html') //使用的插件名(預設或已存在的)，不存在的話要用use引入
+          .tap(x => {
+            x[0].title = "My Vue App";
+            return x;
+           })
+          .end();
           
 
 

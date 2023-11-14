@@ -71,6 +71,12 @@ a{
   &:hover{
     color: $ViceColor;
   }
+  &.router-link-exact-active {
+        background-color: transparent;
+        filter: drop-shadow(0px 0px 8px rgba(209,247,255,0.7) )
+                drop-shadow(0px 0px 8px rgba(209,247,255,0.7)  )
+                ;
+  }
 }
 
 

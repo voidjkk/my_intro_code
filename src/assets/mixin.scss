@@ -45,3 +45,10 @@ $EmphsizeColor:rgb(255,42,109);
     100% {    transform: translate( $directionX_End ,  $directionY_End ) ;       }
   }
 }
+
+//RWD設定-768px 和425px分界，768px是平板，425px為Moblie L的寬度(參考自F12網頁開發工具)
+@mixin RWD_phone($max-width){
+  @media(max-width:$max-width){
+      @content; //SCSS專用符號，會導入@include 內的CSS語法
+  }
+}
